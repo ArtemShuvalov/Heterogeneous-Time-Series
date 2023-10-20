@@ -113,7 +113,7 @@ def get_optimal_clusters_plot(clusters_dict: dict,
 def get_coocurrence_matrix_plot(dtw_matrix: np.array,
                                 optimal_number_of_clusters: int,
                                 n_runs: int = 10000,
-                                t_clusters: int = 9) -> None:
+                                t_clusters: int = 9) -> np.array:
     """
     Generate a heatmap of the co-occurrence matrix with cluster blocks for visualization.
 
@@ -124,7 +124,7 @@ def get_coocurrence_matrix_plot(dtw_matrix: np.array,
     - t_clusters (int): Number of clusters to extract from the co-occurrence matrix using hierarchical clustering. Default is 9.
 
     Returns:
-    None
+    np.array: The optimal number of denoised clusters
 
     This function calculates a co-occurrence matrix by running KMedoids clustering, normalizes it,
     and then clusters the normalized matrix using hierarchical clustering. It visualizes the matrix
@@ -192,7 +192,7 @@ def get_coocurrence_matrix_plot(dtw_matrix: np.array,
     plt.title("Co-occurrence Matrix Heatmap with Cluster Blocks")
     plt.show()
 
-    return 
+    return consensus_labels
 
 
 def get_sectors(consensus_labels: np.array) -> pd.DataFrame:

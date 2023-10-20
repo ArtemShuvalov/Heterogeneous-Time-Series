@@ -48,19 +48,17 @@ def plot_data_sample(clusters_dict: dict) -> None:
             
             # Call your function to get data and plot
             paths = get_gbm_with_seasonality_paths(N_sim=1,
-                                                mu=cluster_temp['mu'],
-                                                sigma=cluster_temp['sigma'],
-                                                alpha=cluster_temp['alpha'],
-                                                T=1.0,
-                                                n_steps=100)
+                                                   mu=cluster_temp['mu'],
+                                                   sigma=cluster_temp['sigma'],
+                                                   alpha=cluster_temp['alpha'],
+                                                   T=1.0,
+                                                   n_steps=100)
             
             # Add the plot to the appropriate subplot
             row = j // 3
-            col = i  # Use i to keep the category in the specified column
+            col = i 
             
-            # Replace 'plot_data' with the appropriate function or code to plot your data
-            # For example, if 'plot' contains the Matplotlib plot object, you can do:
-            axes[row, col].plot(paths.T, label=key)  # Add label to each plot
+            axes[row, col].plot(paths.T, label=key)
             
             # Set subplot title using the key from the dictionary
             axes[row, col].set_title('_'.join(key.split('_')[:4]))

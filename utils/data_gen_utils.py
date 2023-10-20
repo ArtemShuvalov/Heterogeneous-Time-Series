@@ -1,3 +1,4 @@
+import pandas as pd
 import numpy as np
 
 def generate_clusters_dict(n_rets: int = 3, 
@@ -41,3 +42,36 @@ def generate_clusters_dict(n_rets: int = 3,
                    }
     
     return clusters_dict
+
+
+def get_sectors_df(df_prices: pd.DataFrame,
+                   df_sectors_map: pd.DataFrame) -> pd.DataFrame:
+    """
+    Generate a DataFrame representing sectors based on stock prices and sector mapping.
+
+    Parameters:
+    - df_prices (pd.DataFrame): The DataFrame containing stock prices with stock IDs as columns.
+    - df_sectors_map (pd.DataFrame): The DataFrame mapping stock IDs to sector IDs.
+
+    Returns:
+    - df_sectors (pd.DataFrame): A DataFrame representing sectors with sector IDs as columns
+      and the sector's mean stock prices over time.
+
+    This function creates a DataFrame representing sectors based on stock prices and a mapping
+    of stock IDs to sector IDs. For each sector, it calculates the mean stock prices of all
+    stocks belonging to that sector over time.
+
+    Example usage:
+    sector_prices = get_sectors_df(stock_prices_df, sector_mapping_df)
+    """
+    
+    df_sectors = pd.DataFrame(index=df_prices.index, 
+                              columns=df_prices.columns)
+
+    for sector_id_temp in df_sectors_map.sector_id:
+        stock_id_arr_temp = df_sectors_map[df_sectors_map.sector_id == sector_id_temp].stock_id
+
+        for stock_id_temp in stock_id_arr_temp:
+            df_sectors[stock_id_temp] = df_prices[stock_id_arr_temp].mean(axis=1)
+
+    return df_sectors
