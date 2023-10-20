@@ -17,3 +17,21 @@ We can take a step in the direction proposed by authors and try to solve the fol
 
 As an idea, we can use these methods to clusters of stock which would represent different sectors/industries.
 
+### Contents
+
+Notebook: hts_notebook.ipynb
+
+Data: data/
+
+Code: utils/
+
+### Getting Started
+
+Clone this repository to your local machine using git clone.
+Explore the Jupyter notebook hts_notebook.ipynb to understand our approach and findings.
+Access the dataset in the data/ directory. Please reach out if you wish to replicate the analysis.
+Review the code in the utils/ directory for implementation details.
+
+License
+
+This project is licensed under the Apache 2.0 license.
