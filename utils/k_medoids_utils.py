@@ -7,11 +7,6 @@ from scipy.cluster.hierarchy import linkage, fcluster
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-import warnings
-# Suppress the specific warning
-warnings.filterwarnings("ignore", message="Cluster .* is empty! .*")
-warnings.filterwarnings("ignore", category=RuntimeWarning, module="seaborn")
-
 
 def get_coocurrence_matrix(dtw_matrix: np.array,
                            n_runs: int = 1000,
