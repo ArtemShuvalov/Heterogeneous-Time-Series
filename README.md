@@ -19,11 +19,11 @@ As an idea, we can use these methods to clusters of stock which would represent 
 
 ### Contents
 
-Notebook: hts_notebook.ipynb
+Notebook: [hts_notebook.ipynb](https://github.com/ArtemShuvalov/Heterogeneous-Time-Series/blob/main/hts_notebook.ipynb)
 
 Data: data/
 
-Code: utils/
+Code: [utils/](https://github.com/ArtemShuvalov/Heterogeneous-Time-Series/blob/main/utils/)
 
 ### Getting Started
 
