@@ -43,8 +43,7 @@ def get_ols_assumption_report(y: pd.DataFrame,
         # Isolate the y (dependent variable) for the stock
         y = y[stock_id]
         
-        # You can replace the following line with your own independent variables
-        X = sm.add_constant(X[stock_id]) # Using time index as independent variable
+        X = sm.add_constant(X[stock_id])
         
         # Fit the OLS model
         model = sm.OLS(y, X).fit()
@@ -56,7 +55,7 @@ def get_ols_assumption_report(y: pd.DataFrame,
         condition_number = np.linalg.cond(model.model.exog)
         report['Collinearity'] = 'Violated' if condition_number > 30 else 'Not Violated'
         
-        # Zero Conditional Mean: Assumed if intercept is in the model
+        # Zero Conditional Mean
         report['Zero Conditional Mean'] = 'Assumed' if 'const' in model.model.exog_names else 'Violated'
         
         # Homoscedasticity: Breusch-Pagan Test

@@ -146,13 +146,9 @@ def get_coocurrence_matrix_plot(dtw_matrix: np.array,
     # Normalize the co-occurrence matrix
     co_occurrence_matrix /= n_runs
 
-    # Cluster the co-occurrence matrix using hierarchical clustering
-    # For this example, I'm using Ward's linkage method; feel free to explore others
+    # Cluster the co-occurrence matrix using hierarchical clustering with Ward's method
     Z = linkage(co_occurrence_matrix, method='ward')
     consensus_labels = fcluster(Z, t=t_clusters, criterion='maxclust')
-
-    # Now, consensus_labels contains your final cluster assignments
-
 
     # Sorting co-occurrence matrix by consensus_labels for better visualization
     sorted_indices = np.argsort(consensus_labels)
@@ -164,7 +160,7 @@ def get_coocurrence_matrix_plot(dtw_matrix: np.array,
 
     start_idx = 0
     for label in unique_labels:
-        size = np.sum(consensus_labels == label)  # number of samples in this cluster
+        size = np.sum(consensus_labels == label)
         mask[start_idx:start_idx+size, start_idx:start_idx+size] = 0
         start_idx += size
 
